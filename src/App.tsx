@@ -7,6 +7,7 @@ import Anuncios from "./pages/admin/Anuncios";
 import Reservaciones from "./pages/admin/Reservaciones";
 import Pagos from "./pages/admin/Pagos";
 import Visitantes from "./pages/admin/Visitantes";
+import Chat from "./pages/Chat"; 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import "./App.css";
 
@@ -64,6 +65,16 @@ function App() {
           }
         />
 
+        
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <Chat />
+            </ProtectedRoute>
+          }
+        />
+
         {/* Dashboard para ADMIN */}
         <Route
           path="/admin/dashboard"
@@ -116,6 +127,16 @@ function App() {
           element={
             <ProtectedRoute requireAdmin>
               <Visitantes />
+            </ProtectedRoute>
+          }
+        />
+
+        
+        <Route
+          path="/admin/chat"
+          element={
+            <ProtectedRoute requireAdmin>
+              <Chat />
             </ProtectedRoute>
           }
         />

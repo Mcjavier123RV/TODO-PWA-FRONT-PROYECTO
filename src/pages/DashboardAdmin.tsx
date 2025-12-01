@@ -122,6 +122,13 @@ export default function DashboardAdmin() {
             <span className="menu-icon">🚗</span>
             <span>Visitantes</span>
           </Link>
+
+          <Link to="/admin/chat" className="menu-item">
+              <span className="menu-icon">💬</span>
+              <span>Chat</span>
+          </Link>
+          
+
         </div>
       </div>
     </div>
