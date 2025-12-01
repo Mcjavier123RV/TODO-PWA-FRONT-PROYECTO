@@ -1,11 +1,25 @@
-// src/routes/ProtectedRoute.tsx (CORREGIDO)
-
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { getUser } from "../api";
 
-export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const token = localStorage.getItem("token");
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  requireAdmin?: boolean;
+}
 
-  // 💡 ¡CAMBIA to="/" por to="/login"!
-  return token ? <>{children}</> : <Navigate to="/login" replace />;
+export default function ProtectedRoute({ children, requireAdmin = false }: ProtectedRouteProps) {
+  const token = localStorage.getItem("token");
+  const user = getUser();
+
+  // Si no hay token, redirigir al login
+  if (!token || !user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // Si la ruta requiere admin y el usuario no es admin
+  if (requireAdmin && user.role !== 'admin') {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return <>{children}</>;
 }
