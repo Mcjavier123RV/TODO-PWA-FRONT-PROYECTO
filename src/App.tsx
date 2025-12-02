@@ -7,7 +7,9 @@ import Anuncios from "./pages/admin/Anuncios";
 import Reservaciones from "./pages/admin/Reservaciones";
 import Pagos from "./pages/admin/Pagos";
 import Visitantes from "./pages/admin/Visitantes";
-import Chat from "./pages/Chat"; 
+import Encuestas from "./pages/admin/Encuestas"; 
+import Chat from "./pages/Chat";
+import EncuestasUsuario from "./pages/EncuestasUsuario"; 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import "./App.css";
 
@@ -65,12 +67,21 @@ function App() {
           }
         />
 
-        
         <Route
           path="/chat"
           element={
             <ProtectedRoute>
               <Chat />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ← NUEVA RUTA PARA ENCUESTAS USUARIO */}
+        <Route
+          path="/encuestas"
+          element={
+            <ProtectedRoute>
+              <EncuestasUsuario />
             </ProtectedRoute>
           }
         />
@@ -131,12 +142,21 @@ function App() {
           }
         />
 
-        
         <Route
           path="/admin/chat"
           element={
             <ProtectedRoute requireAdmin>
               <Chat />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ← NUEVA RUTA PARA ENCUESTAS ADMIN */}
+        <Route
+          path="/admin/encuestas"
+          element={
+            <ProtectedRoute requireAdmin>
+              <Encuestas />
             </ProtectedRoute>
           }
         />

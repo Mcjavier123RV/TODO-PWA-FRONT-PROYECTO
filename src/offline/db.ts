@@ -73,3 +73,4 @@ export async function setMapping(clienteId: string, serverId: string) {
 export async function getMapping(clienteId: string) {
   return (await (await db()).get("meta", clienteId))?.serverId as string | undefined;
 }
+

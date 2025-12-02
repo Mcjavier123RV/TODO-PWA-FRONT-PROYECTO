@@ -110,6 +110,12 @@ export default function DashboardUsuario() {
             <span className="action-icon">💬</span>
             <span>Chat con Admin</span>
             </Link>
+
+          <Link to="/encuestas" className="action-btn">
+            <span className="action-icon">📊</span>
+            <span>Encuestas</span>
+            </Link>
+
         </div>
       </div>
 

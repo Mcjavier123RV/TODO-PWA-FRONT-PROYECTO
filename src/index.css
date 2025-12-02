@@ -1517,7 +1517,7 @@ body {
 /* ==================== CHAT ==================== */
 .chat-container {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns:  1fr;
   gap: 0;
   height: calc(100vh - 200px);
   max-height: 800px;
@@ -1530,11 +1530,18 @@ body {
 /* ==================== SIDEBAR (Lista de conversaciones) ==================== */
 .chat-sidebar {
   background: var(--bg-card);
-  border-right: 1px solid var(--border);
+  border-right: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+.chat-main {
+    display: flex; /* Asegura que el contenido (header, mensajes, input) se apile */
+    flex-direction: column;
+    background: var(--bg-dark);
+}
+
+
 
 .chat-sidebar h3 {
   font-size: 24px;
@@ -1964,4 +1971,872 @@ body {
     padding: 10px 18px;
   }
 }
+
+/* ==================== ENCUESTAS ==================== */
+
+/* Grid de encuestas (admin) */
+.encuestas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.encuesta-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.encuesta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary);
+}
+
+.encuesta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.encuesta-header h3 {
+  font-size: 18px;
+  color: var(--text-light);
+  margin: 0;
+  flex: 1;
+}
+
+.encuesta-descripcion {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.encuesta-info {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.encuesta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn-secondary {
+  padding: 8px 14px;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.btn-warning {
+  padding: 8px 14px;
+  background: var(--warning);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background: #e67e22;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  padding: 8px 14px;
+  background: var(--danger);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Modal grande para crear encuestas */
+.modal-large {
+  max-width: 800px;
+}
+
+.form-section {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.form-section h3 {
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.section-header-with-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-add-small {
+  padding: 8px 16px;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-add-small:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.form-group-checkbox {
+  margin-top: 16px;
+}
+
+.form-group-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.form-group-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Cards de preguntas */
+.pregunta-card {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.pregunta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.pregunta-header h4 {
+  font-size: 16px;
+  color: var(--primary);
+  margin: 0;
+}
+
+.btn-remove-small {
+  padding: 6px 12px;
+  background: var(--danger);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-remove-small:hover {
+  background: #c0392b;
+}
+
+/* Opciones de preguntas */
+.opciones-container {
+  margin-top: 12px;
+}
+
+.opciones-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.opcion-input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.opcion-input-group input {
+  flex: 1;
+}
+
+.btn-remove-option {
+  padding: 8px 12px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--danger);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-remove-option:hover {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+.btn-add-option {
+  padding: 8px 16px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.btn-add-option:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Configuración de escala */
+.escala-config {
+  margin-top: 12px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Resultados */
+.resultados-content {
+  padding: 25px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.resultados-summary {
+  background: var(--bg-light);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.resultados-summary h3 {
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.resultados-summary p {
+  margin: 8px 0;
+  color: var(--text-light);
+}
+
+.resultado-pregunta {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.resultado-pregunta h4 {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.resultado-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resultado-opcion {
+  display: grid;
+  grid-template-columns: 150px 1fr 100px;
+  gap: 12px;
+  align-items: center;
+}
+
+.opcion-texto {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.opcion-barra {
+  height: 24px;
+  background: var(--bg-dark);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.opcion-progreso {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  transition: width 0.5s ease;
+}
+
+.opcion-cantidad {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.resultado-escala {
+  background: var(--bg-dark);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.resultado-escala p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.resultado-texto-libre {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.respuesta-libre {
+  background: var(--bg-dark);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+}
+
+.respuesta-libre p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ==================== ENCUESTAS USUARIO ==================== */
+
+.encuestas-list-usuario {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.encuesta-card-usuario {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.encuesta-card-usuario:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary);
+}
+
+.encuesta-card-usuario.respondida {
+  opacity: 0.7;
+  border-color: var(--success);
+}
+
+.encuesta-header-usuario {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.encuesta-header-usuario h3 {
+  font-size: 18px;
+  color: var(--text-light);
+  margin: 0;
+  flex: 1;
+}
+
+.badge-respondida {
+  background: rgba(39, 174, 96, 0.2);
+  color: var(--success);
+  border: 1px solid var(--success);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-pendiente {
+  background: rgba(243, 156, 18, 0.2);
+  color: var(--warning);
+  border: 1px solid var(--warning);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn-responder {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background: var(--primary);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-responder:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(212, 165, 116, 0.3);
+}
+
+/* Formulario de responder encuesta */
+.encuesta-responder {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.encuesta-responder-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.encuesta-responder-header h2 {
+  font-size: 24px;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.encuesta-responder-header p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.pregunta-responder {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.pregunta-responder h3 {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.opciones-respuesta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.opcion-radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-dark);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.opcion-radio:hover {
+  border-color: var(--primary);
+  background: var(--bg-card);
+}
+
+.opcion-radio input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.opcion-radio input[type="radio"]:checked + span {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.opcion-radio span {
+  font-size: 15px;
+  color: var(--text-light);
+}
+
+.pregunta-responder textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.pregunta-responder textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--bg-card);
+}
+
+/* Escala slider */
+.escala-respuesta {
+  padding: 12px 0;
+}
+
+.escala-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.escala-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: var(--bg-dark);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.escala-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(212, 165, 116, 0.4);
+}
+
+.escala-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(212, 165, 116, 0.4);
+}
+
+.escala-value {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.encuesta-responder-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* ==================== RESPONSIVE ENCUESTAS ==================== */
+@media (max-width: 768px) {
+  .encuestas-grid,
+  .encuestas-list-usuario {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-large {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .resultado-opcion {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .opcion-cantidad {
+    text-align: left;
+  }
+
+  .encuesta-responder {
+    padding: 20px;
+  }
+
+  .encuesta-actions {
+    flex-direction: column;
+  }
+
+  .encuesta-actions button {
+    width: 100%;
+  }
+}
+/* ==================== AJUSTES GENERALES PARA VISTA PC ==================== */
+
+/* Asegura que el contenido principal de las páginas se centre y tenga un ancho máximo en PC */
+.page-content-wrapper {
+    max-width: 1400px; /* Ya lo tienes en .page-content, pero lo envolveremos para el layout de 2 columnas */
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* ==================== CHAT ==================== */
+
+/* Contenedor de Chat - Aplicar la cuadrícula de 2 columnas solo en PC */
+@media (min-width: 993px) {
+    /* Usaremos una clase contenedora que envuelve la barra lateral y el área principal del chat */
+    .chat-page-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr; /* Sidebar de 320px, Contenido Principal ocupa el resto */
+        gap: 0;
+        max-width: 1400px;
+        margin: 30px auto; /* Centrar y dar un margen superior/inferior */
+        height: calc(100vh - 120px); /* Ajuste de altura para PC, asumiendo un header */
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--border);
+    }
+
+    .page-content .chat-container {
+        /* Desactivar estilos de .chat-container que definen la cuadrícula ya que ahora usamos .chat-page-layout */
+        display: block;
+        height: 100%;
+        max-height: none;
+        box-shadow: none;
+        border-radius: 0;
+        background: var(--bg-dark);
+        border: none;
+    }
+
+    /* Títulos en la barra lateral */
+    .chat-sidebar h3 {
+        padding: 20px 20px;
+        font-size: 20px;
+    }
+
+    /* El main del chat que contiene el header, mensajes y el input */
+    .chat-main {
+        border-left: 1px solid var(--border);
+    }
+}
+
+/* Ajustes para la lista de conversaciones en la vista móvil (donde se ve como un listado) */
+/* Si la vista móvil necesita un contenedor principal, se usa .page-content */
+
+
+/* ==================== ENCUESTAS ==================== */
+
+/* Contenedor de la vista de Encuestas en PC */
+@media (min-width: 993px) {
+    .surveys-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas para PC */
+        gap: 30px;
+        padding: 30px; /* Padding ya está en .page-content, pero lo re-aseguramos */
+    }
+
+    /* Estilo para las tarjetas individuales de Encuesta (El bloque gris oscuro) */
+    .survey-card {
+        background: var(--bg-card);
+        padding: 30px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .survey-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        border-color: var(--primary);
+    }
+
+    /* Título de la Encuesta */
+    .survey-card h3 {
+        font-size: 22px;
+        color: var(--primary);
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+
+    /* Subtítulo/Descripción */
+    .survey-card p {
+        font-size: 15px;
+        color: var(--text-muted);
+        margin-bottom: 15px;
+    }
+
+    /* Detalle de preguntas/estado */
+    .survey-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .survey-meta span {
+        font-size: 14px;
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    /* Botones de acción (Ver resultados, Exportar, Cerrar, Eliminar) */
+    .survey-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .survey-actions button, .survey-actions a {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        border: none;
+    }
+
+    .btn-results {
+        background: var(--accent);
+        color: white;
+    }
+
+    .btn-results:hover {
+        background: #2980b9;
+        transform: translateY(-1px);
+    }
+
+    .btn-export {
+        background: var(--bg-light);
+        color: var(--text-light);
+        border: 1px solid var(--border);
+    }
+
+    .btn-export:hover {
+        background: #3a414e;
+        transform: translateY(-1px);
+        border-color: var(--accent);
+    }
+
+    .btn-close {
+        background: var(--warning);
+        color: var(--bg-dark);
+    }
+    
+    .btn-close:hover {
+        background: #e67e22;
+        transform: translateY(-1px);
+    }
+
+    .btn-delete {
+        background: var(--danger);
+        color: white;
+    }
+
+    .btn-delete:hover {
+        background: #c0392b;
+        transform: translateY(-1px);
+    }
+}
+
+@media (min-width: 993px){
+  .chat-container{
+    grid-template-columns: 320px 1fr;
+    max-width: 1400px;
+    margin: 30px auto;
+    height: calc(100vh - 120px);
+    border:  1px solid var(--border);
+  }
+  .chat-sidebar{
+    border-right: 1px solid var(--border);
+  }
+
+  .chat-main {
+    min-height: 0;
+  }
+}
+
+
+
 }

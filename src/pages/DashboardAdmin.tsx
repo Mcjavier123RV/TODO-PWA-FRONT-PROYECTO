@@ -127,7 +127,10 @@ export default function DashboardAdmin() {
               <span className="menu-icon">💬</span>
               <span>Chat</span>
           </Link>
-          
+          <Link to="/admin/encuestas" className="menu-item">
+                <span className="menu-icon">📊</span>
+                <span>Encuestas</span>
+          </Link>
 
         </div>
       </div>
